@@ -397,6 +397,10 @@
    align-items: center;
 }
 
-.info-container span {
+.info-container p {
    font-weight: bold;
+}
+
+.info-container span {
+   font-weight: normal;
 }
