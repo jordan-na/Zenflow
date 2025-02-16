@@ -303,6 +303,39 @@
    color: #000;
 }
 
+/* Styles for confirmation.html */
+
+.confirm-container {
+   max-width: 500px;
+}
+
+.confirm-container p {
+   font-size: 25px;
+   font-weight: bold;
+   margin-bottom: 20px;
+   text-align: center;
+}
+
+.confirm-container p span {
+   color:#ff5154;
+}
+
+.confirm-container button {
+   outline: 1px solid #000;
+   border: none;
+   text-transform: uppercase;
+   background-color: #000;
+   color: #fff;
+   padding: 10px 35px;
+   font-size: 20px;
+   transition: 0.15s;
+}
+
+.confirm-container button:hover {
+   background-color: #bbb;
+   color: #000;
+}
+
 /* Styes for locations.html */
 
 .locations-header {
