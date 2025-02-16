@@ -12,6 +12,7 @@ const init = () => {
    const cancelButton = document.getElementById("cancel-btn");
    confirmButton.addEventListener("click", () => {
       window.location.href = "./profile.html";
+      localStorage.setItem("upcomingMassage", localStorage.getItem("massageType"));
    });
    cancelButton.addEventListener("click", () => {
       window.location.href = "./booking.html";
