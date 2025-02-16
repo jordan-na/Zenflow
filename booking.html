@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+   <link rel="stylesheet" href="./styles.css">
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+   <script defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhThzJFdDh9iDxwAoAL7KuXHX9pa2qvOI&libraries=places&callback=initAutocomplete">
+      </script>
+   <title>ZenFlow</title>
+</head>
+
+<body class="whole-screen">
+   <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="./index.html">
+            <img src="./assets/zenflow.png" alt="Zenflow logo">
+         </a>
+         <div class=" justify-content-center">
+            <ul class="navbar-nav">
+               <li class="nav-item"><a class="nav-link" href="./services.html">Our Services</a></li>
+               <li class="nav-item"><a class="nav-link selected" href="./booking.html">Book Now</a></li>
+               <li class="nav-item"><a class="nav-link" href="./locations.html">Locations</a></li>
+               <li class="nav-item"><a class="nav-link" href="./contact.html">Contact Us</a></li>
+            </ul>
+         </div>
+         <a href="./profile.html">
+            <img src="./assets/Women-With-Beautiful-Face_1200px.jpg.webp" alt="Profile" class="profile-pic">
+         </a>
+      </div>
+   </nav>
+   <main class="container mt-5 mb-5">
+      <form class="book-form" action="#">
+         <div class="massage-type-form-group">
+            <div>
+               <p>I want a <span>...</span></p>
+               <div class="btn-group massage-options" role="group">
+                  <input type="radio" class="btn-check" name="massageType" id="swedish" autocomplete="off">
+                  <label class="btn btn-outline-red" for="swedish">Swedish</label>
+
+                  <input type="radio" class="btn-check" name="massageType" id="deepTissue" autocomplete="off">
+                  <label class="btn btn-outline-red" for="deepTissue">Deep Tissue</label>
+
+                  <input type="radio" class="btn-check" name="massageType" id="sports" autocomplete="off">
+                  <label class="btn btn-outline-red" for="sports">Sports</label>
+
+                  <input type="radio" class="btn-check" name="massageType" id="hotStone" autocomplete="off">
+                  <label class="btn btn-outline-red" for="hotStone">Hot Stone</label>
+               </div>
+            </div>
+            <img id="massage-type-img" src="./assets/swedish_massage.jpg" alt="massage type">
+         </div>
+         <div class="date-form-group">
+            <p>On <span></span></p>
+            <div class="container mt-3 p-0">
+               <label for="datetime-picker" class="form-label">Select Date & Time:</label>
+               <input type="text" id="datetime-picker" class="form-control" placeholder="Pick a date & time">
+            </div>
+         </div>
+         <div class="location-form-group">
+            <p>At <span id="location-form-label"></span></p>
+            <input id="address-input-form" type="text" class="form-control mb-4" placeholder="Enter an address...">
+            <!-- Google Maps Embed -->
+            <iframe id="googleMap" width="80%" height="400px" style="border:0;" allowfullscreen="" loading="lazy"
+               referrerpolicy="no-referrer-when-downgrade"
+               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhThzJFdDh9iDxwAoAL7KuXHX9pa2qvOI&q=University+of+Ottawa">
+            </iframe>
+         </div>
+         <div class="book-form-group">
+            <p>Your total will be <span>$90</span></p>
+            <button>Book Now</button>
+         </div>
+      </form>
+   </main>
+   <script>
+      function initAutocomplete() {
+         var searchInput = document.getElementById('address-input-form');
+         var mapFrame = document.getElementById('googleMap');
+         var locationLabel = document.querySelector(".location-form-group p span");
+
+         // Default address: University of Ottawa
+         let defaultAddress = "University of Ottawa, Ottawa, ON";
+         let encodedAddress = encodeURIComponent(defaultAddress);
+
+         // **Set the default text in the location label**
+         locationLabel.textContent = defaultAddress;
+
+         localStorage.setItem("selectedAddress", defaultAddress);
+
+         // **Set the default Google Map location**
+         mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDhThzJFdDh9iDxwAoAL7KuXHX9pa2qvOI&q=${encodedAddress}`;
+
+         if (searchInput) {
+            var autocomplete = new google.maps.places.Autocomplete(searchInput, {
+               types: ['geocode'],
+            });
+
+            autocomplete.addListener('place_changed', function () {
+               var place = autocomplete.getPlace();
+               if (place.formatted_address) {
+                  console.log("Selected Address:", place.formatted_address);
+
+                  let newEncodedAddress = encodeURIComponent(place.formatted_address);
+
+                  // **Update the Google Map location**
+                  mapFrame.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDhThzJFdDh9iDxwAoAL7KuXHX9pa2qvOI&q=${newEncodedAddress}`;
+
+                  // **Update the location label text dynamically**
+                  locationLabel.textContent = place.formatted_address;
+
+                  // **Update the input field with the selected address**
+                  searchInput.value = place.formatted_address;
+
+                  localStorage.setItem("selectedAddress", place.formatted_address);
+               }
+            });
+         }
+      }
+
+      window.addEventListener("load", initAutocomplete);
+   </script>
+   <script src="./scripts/booking.js"></script>
+</body>
+
+</html>
