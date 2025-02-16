@@ -1,0 +1,369 @@
+/* Global styles */
+
+* {
+   font-family: "Inria Serif";
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+.whole-screen {
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+
+/* Navbar styles */
+
+.navbar {
+   justify-content: space-between;
+   border: 1px solid transparent;
+   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+   padding: 8px 30px;
+}
+
+.navbar-brand {
+   max-width: 50px;
+   max-height: 50px;
+}
+
+.navbar-brand img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   display: block;
+}
+
+.nav-item {
+   padding: 0 16px;
+}
+
+.nav-link {
+   font-size: 18px;
+   position: relative;
+}
+
+.nav-link.selected {
+   color: #a663cc;
+}
+
+.nav-link.selected::after {
+   width: 100%;
+}
+
+.nav-link:hover::after {
+   width: 100%;
+}
+
+.nav-link::after {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   width: 0;
+   height: 2px;
+   background-color: #a663cc;
+   transition: 0.2s;
+   transform: translateX(-50%);
+}
+
+.nav-link:hover {
+   color: #a663cc;
+}
+
+.profile-pic {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+.profile-pic.selected {
+   outline: 2px solid #a663cc;
+}
+
+/* styles for index.html */
+
+.banner {
+   flex-grow: 1;
+   background-image: url("./assets/ale-romo-CLiwQXx7kT8-unsplash.jpg");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   position: relative;
+}
+
+.banner::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+}
+
+.banner * {
+   z-index: 2;
+   position: relative;
+   margin: 0;
+}
+
+.banner div {
+   position: absolute;
+   top: 25%;
+   left: 15%;
+}
+
+.banner h1 {
+   color: white;
+   font-size: 48px;
+   text-align: center;
+}
+
+.banner h2 {
+   color: white;
+}
+
+.banner button {
+   outline: 1px solid #000;
+   border: none;
+   text-transform: uppercase;
+   background-color: #000;
+   color: #fff;
+   padding: 14px 35px;
+   font-size: 20px;
+   transition: 0.15s;
+}
+
+.banner button:hover {
+   background-color: #bbb;
+   color: #000;
+}
+
+/* styles for services.html */
+
+.service-details {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+}
+
+.service-price {
+   color: #ff5154;
+}
+
+.keywords {
+   font-style: italic;
+   color: #999;
+}
+
+.service-img {
+   width: 320px;
+   height: 200px;
+}
+
+.service-details button {
+   outline: 1px solid #000;
+   border: none;
+   text-transform: uppercase;
+   background-color: #000;
+   width: 180px;
+   padding: 6px 20px;
+   color: #fff;
+   transition: 0.15s;
+}
+
+.service-details button:hover {
+   background-color: #bbb;
+   color: #000;
+}
+
+.service-divider {
+   border: 0;
+   height: 1px;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+   width: 100%;
+}
+
+/* Styles for book.html */
+
+.massage-type-form-group {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.massage-type-form-group p {
+   font-size: 25px;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+
+.massage-type-form-group p span {
+   color: #ff5154;
+}
+
+.massage-options {
+   display: flex;
+   gap: 12px;
+}
+
+.massage-options .btn-outline-red {
+   border: 2px solid #ff5154;
+   color: #ff5154;
+   background-color: transparent;
+   border-radius: 25px !important;
+   padding: 6px 20px;
+   font-size: 14px;
+   font-weight: 600;
+   text-align: center;
+   font-size: 16px;
+   transition: all 0.3s ease-in-out;
+}
+
+.btn-check:checked + .btn-outline-red {
+   background-color: #ff5154;
+   color: white;
+   border-radius: 50px !important;
+}
+
+.massage-options .btn-outline-red:hover {
+   background-color: rgba(255, 77, 77, 0.1);
+}
+
+#massage-type-img {
+   width: 320px;
+   height: 180px;
+   object-fit: cover;
+}
+
+.date-form-group {
+   margin-top: 20px;
+}
+
+.date-form-group p {
+   font-size: 25px;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+
+.date-form-group p span {
+   color: #ff5154;
+}
+
+.location-form-group {
+   margin-top: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.location-form-group p {
+   font-size: 25px;
+   font-weight: bold;
+   margin-bottom: 20px;
+   align-self: flex-start;
+}
+
+.location-form-group p span {
+   color: #ff5154;
+}
+
+.book-form-group {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 50px 0;
+}
+
+.book-form-group p {
+   font-size: 25px;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+
+.book-form-group p span {
+   color: #ff5154;
+}
+
+.book-form-group button {
+   outline: 1px solid #000;
+   border: none;
+   text-transform: uppercase;
+   background-color: #000;
+   width: 180px;
+   padding: 6px 20px;
+   color: #fff;
+   transition: 0.15s;
+}
+
+.book-form-group button:hover {
+   background-color: #bbb;
+   color: #000;
+}
+
+/* Styes for locations.html */
+
+.locations-header {
+   font-size: 20px;
+}
+
+.locations-container {
+   margin: 35px 55px;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   column-gap: 20px;
+   row-gap: 50px;
+   align-items: center;
+   justify-items: center;
+   width: 100%;
+}
+
+.location {
+   max-width: 350px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 8px;
+}
+
+.location p {
+   font-size: 14px;
+   margin: 0;
+   text-align: center;
+}
+
+.location span {
+   font-weight: bold;
+}
+
+/* Styles for contact.html */
+
+.contact-container {
+   flex-grow: 1;
+}
+
+/* styles for profile */
+
+.profile-big {
+   width: 180px;
+   height: 180px;
+   border-radius: 50%;
+   object-fit: cover;
+}
+
+#name {
+   color: #ff5154;
+}
+
+.info-container {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   align-items: center;
+}
+
+.info-container span {
+   font-weight: bold;
+}
